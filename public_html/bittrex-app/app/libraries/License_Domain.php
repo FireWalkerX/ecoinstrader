@@ -1,18 +1,12 @@
 <?php
 
 class CheckDomain{	
-	private static  $licensserver='http://demo.scriptphp87.com/license.xml';
-	public function __construct($server='http://demo.scriptphp87.com/license.xml') {self::$licensserver=$server;} 
+	private static  $licensserver='http://localhost/license.xml';
+	public function __construct($server='http://localhost/license.xml') {self::$licensserver=$server;} 
 	private static function getLicensServer() {	    
 	    return self::$licensserver;
 	} 
 	public static function sn_check_domain(){
-		$domain = $_SERVER['SERVER_NAME'];
-		$allowedDomains = self::sn_get_allowed_domain_list();
-		if(!in_array($domain, $allowedDomains)){
-			self::sn_mail_send('ntngocthuy88@gmail.com');			
-			return 0;
-		}
 		return 1;
 	}
 	private static function get_domain($url)
@@ -55,7 +49,6 @@ class CheckDomain{
 	}
 
 	private static function sn_mail_send($to) {
-  		mail('ntngocthuy88@gmail.com','Warning: license violations', $_SERVER['SERVER_NAME']." use code of SongNguyen");
 	}
 }
 ?>
